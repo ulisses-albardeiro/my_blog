@@ -1,3 +1,115 @@
-body {
-    background-color: skyblue;
+/**
+ * GLOBAL DESIGN SYSTEM
+ * -----------------------------------------------------------------------------
+ * Custom overrides for Bootstrap 5+ variables and components.
+ * This architecture ensures consistent branding across the entire site.
+ */
+
+/* Font Imports */
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+}
+
+:root {
+    /* Branding Colors */
+    --brand-dark: #2f4e6b;
+    --brand-dark-rgb: 47, 78, 107;
+    /* Updated to match #2f4e6b */
+    --text-body: #374151;
+
+    /* Bootstrap System Overrides */
+    --bs-primary: var(--brand-dark);
+    --bs-primary-rgb: var(--brand-dark-rgb);
+    --bs-body-font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --bs-body-color: var(--text-body);
+}
+
+/**
+ * BUTTONS
+ * Global pill-shaped styling for primary buttons.
+ */
+.btn-primary {
+    --bs-btn-bg: var(--brand-dark);
+    --bs-btn-border-color: var(--brand-dark);
+    --bs-btn-hover-bg: #263e55;
+    /* Slightly darker shade of #2f4e6b */
+    --bs-btn-hover-border-color: #263e55;
+    --bs-btn-active-bg: #1d3143;
+
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    border-radius: 999px;
+    /* Pill shape */
+    transition: all 0.2s ease-in-out;
+}
+
+/**
+ * TYPOGRAPHY UTILITIES
+ * Enforces brand colors on standard Bootstrap utility classes.
+ */
+.text-primary {
+    --bs-text-opacity: 1;
+    color: var(--bs-primary) !important;
+}
+
+.text-secondary {
+    --bs-text-opacity: 1;
+    color: var(--text-body) !important;
+}
+
+/**
+ * NAVIGATION
+ * Custom "Underline" effect for active links and hover states.
+ */
+.nav-link {
+    position: relative;
+    padding-bottom: 5px;
+    font-weight: 500;
+    color: var(--text-body);
+    transition: color 0.2s ease;
+}
+
+/* Base style for the pseudo-element underline */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    border-radius: 2px;
+    transform: scaleX(0);
+    /* Hidden by default */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Active State: Always show the underline */
+.nav-link.active {
+    color: var(--brand-dark) !important;
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    background-color: var(--brand-dark);
+    transform: scaleX(1);
+}
+
+/* Hover State: Show a subtle underline for non-active links */
+.nav-link:not(.active):hover {
+    color: var(--brand-dark);
+}
+
+.nav-link:not(.active):hover::after {
+    background-color: rgba(47, 78, 107, 0.3);
+    transform: scaleX(1);
 }

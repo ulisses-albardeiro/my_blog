@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<div class="d-flex flex-column min-vh-100">
+
+        {# Nav Menu #}
+		{% include "blog/partials/_nav.html.twig" %}
+
+		<main class="flex-grow-1">
+			<div class="container py-5">
+				{% block content %}{% endblock %}
+			</div>
+		</main>
+
+        {# Footer #}
+		{% include "blog/partials/_footer.html.twig" %}
+
+	</div>
+{% endblock %}
